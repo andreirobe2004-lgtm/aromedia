@@ -456,3 +456,9 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
 /* Fix-uri mobil */
 .calc > * { min-width: 0; }
 .flow { overflow-wrap: anywhere; }
+
+/* Video în cadre */
+.frame.playing .hud, .frame.playing .corner { display: none; }
+.frame video { background: #000; }
+.hero-frame video { pointer-events: none; }
+.logo-slot.client { border-style: solid; color: var(--ink); font-weight: 700; letter-spacing: .02em; }

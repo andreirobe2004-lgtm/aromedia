@@ -115,10 +115,16 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll("[data-niche]").forEach(w => { w.hidden = !(f === "toate" || w.dataset.niche === f); });
     }));
   }
-  document.querySelectorAll(".work .frame video").forEach(v => {
-    const btn = v.parentElement.querySelector(".play");
+  const vids = document.querySelectorAll(".work .frame video");
+  vids.forEach(v => {
+    const fr = v.parentElement;
+    const btn = fr.querySelector(".play");
     if (!btn) return;
-    btn.addEventListener("click", () => { v.controls = true; v.play(); btn.remove(); });
+    btn.addEventListener("click", () => {
+      vids.forEach(o => { if (o !== v) o.pause(); });
+      v.controls = true; v.play(); fr.classList.add("playing"); btn.remove();
+    });
+    v.addEventListener("play", () => vids.forEach(o => { if (o !== v) o.pause(); }));
   });
 
   /* ---------- Formular ofertă ---------- */

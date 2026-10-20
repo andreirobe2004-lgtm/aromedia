@@ -70,7 +70,7 @@ Tot ce e marcat pe site cu galben (`.todo`) sau între paranteze drepte:
 - [ ] **1.250.000+ lei**: nu apare pe site-ul nou. Adaug-o doar dacă poți susține cifra cu date de la clienți.
 - [ ] **Testimoniale**: 2–3 reale, cu numele magazinului și acordul clientului. Nu publica testimoniale inventate.
 - [ ] **Studiu de caz găini**: rezultatul campaniei
-- [ ] **Portofoliu**: video-uri și detalii (produs, nișă, unghi, rezultat)
+- [ ] **Portofoliu**: cele 11 clipuri CarSupreme sunt puse. Confirmă că CarSupreme e de acord să apară cu numele și adaugă rezultate, dacă ai. Datele sunt în `WORKS`, în fiecare card din `portofoliu.html` și `index.html`. Pentru alți clienți sau alte nișe, adaugă video-uri noi în `assets/video/`, iar posterul în `assets/img/posters/`.
 - [ ] **FAQ „Câte revizii sunt incluse?”**: numărul real de runde
 - [ ] **Pachetul minim 1 × 5**: preț, dacă vrei să fie afișat; acum scrie „La cerere”
 - [ ] **Pagini legale**: verificate de un jurist; data ultimei actualizări

@@ -10,6 +10,8 @@ const CONFIG = {
   bfEnd: "2026-11-30T23:59:59+02:00",
 };
 
+const track = (n, p) => { if (window.aroTrack) window.aroTrack(n, p); };
+
 document.addEventListener("DOMContentLoaded", () => {
   /* ---------- An curent în footer ---------- */
   document.querySelectorAll("[data-year]").forEach(el => (el.textContent = new Date().getFullYear()));
@@ -94,11 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
       if (pre) pre.dataset.calc = `${b} body × ${h} hook-uri = ${n} creative`;
     };
     [bIn, hIn].forEach(i => i.addEventListener("input", render));
-    presets.forEach(p => p.addEventListener("click", () => { bIn.value = p.dataset.b; hIn.value = p.dataset.h; render(); }));
+    presets.forEach(p => p.addEventListener("click", () => { bIn.value = p.dataset.b; hIn.value = p.dataset.h; render(); track("calculator_preset", { structura: `${p.dataset.b}x${p.dataset.h}` }); }));
+    let calcTracked = false;
+    [bIn, hIn].forEach(i => i.addEventListener("change", () => { if (!calcTracked) { calcTracked = true; track("calculator_use"); } }));
     render();
 
     const toForm = calc.querySelector("[data-calc-cta]");
     if (toForm) toForm.addEventListener("click", () => {
+      track("calculator_to_form", { creative: +bIn.value * +hIn.value });
       const n = document.querySelector("#f-numar");
       const s = document.querySelector("#f-structura-hooks");
       if (n) n.value = `${bIn.value} body × ${hIn.value} hook-uri = ${+bIn.value * +hIn.value} creative`;
@@ -111,6 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (filters.length) {
     filters.forEach(btn => btn.addEventListener("click", () => {
       const f = btn.dataset.filter;
+      track("portfolio_filter", { categorie: f });
       filters.forEach(b => b.setAttribute("aria-pressed", String(b === btn)));
       document.querySelectorAll("[data-niche]").forEach(w => { w.hidden = !(f === "toate" || w.dataset.niche === f); });
     }));
@@ -123,8 +129,19 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("click", () => {
       vids.forEach(o => { if (o !== v) o.pause(); });
       v.controls = true; v.play(); fr.classList.add("playing"); btn.remove();
+      track("video_play", { video: (v.getAttribute("src") || "").split("/").pop().replace(".mp4", "") });
     });
     v.addEventListener("play", () => vids.forEach(o => { if (o !== v) o.pause(); }));
+  });
+
+  /* ---------- Click-uri importante ---------- */
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a");
+    if (!a) return;
+    const href = a.getAttribute("href") || "";
+    if (href.startsWith("tel:")) track("click_telefon");
+    else if (href.startsWith("mailto:")) track("click_email");
+    else if (a.classList.contains("btn")) track("cta_click", { text: a.textContent.trim().slice(0, 60), destinatie: href });
   });
 
   /* ---------- Formular ofertă ---------- */
@@ -145,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const r = await fetch(CONFIG.formEndpoint, { method: "POST", body: data, headers: { Accept: "application/json" } });
           if (!r.ok) throw new Error();
           form.reset();
+          track("generate_lead", { formular: form.dataset.subject || "oferta", metoda: "formular" });
           status.textContent = "Am primit cererea. Ne uităm pe produs și revenim cu o propunere de structură, de obicei în 1–2 zile lucrătoare.";
           status.classList.add("ok");
         } catch {
@@ -154,6 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         const subject = encodeURIComponent(form.dataset.subject || "Cerere ofertă — ARO Media");
         const body = encodeURIComponent(lines.join("\n"));
+        track("generate_lead", { formular: form.dataset.subject || "oferta", metoda: "email" });
         window.location.href = `mailto:${CONFIG.contactEmail}?subject=${subject}&body=${body}`;
         status.textContent = "Se deschide aplicația de email cu cererea completată. Apasă Trimite acolo.";
         status.classList.add("ok");

@@ -485,3 +485,18 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
 .structs span { color: var(--ink-2); }
 @media (max-width: 520px) { .structs li { grid-template-columns: 1fr; gap: 4px; } }
 #pachete .retainer { margin-top: clamp(40px, 5vw, 64px); }
+
+/* Banner cookies */
+.cookie-banner {
+  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 200; max-width: 640px; margin-left: auto;
+  background: #151517; color: #f4f3ef; border: 1px solid #2a2a2e; border-radius: 10px;
+  padding: 18px 20px; box-shadow: 0 20px 50px -20px rgba(0,0,0,.8);
+  display: grid; gap: 14px; font-size: 0.92rem;
+}
+.cookie-banner p { margin: 0; color: #c9c9c4; }
+.cookie-banner b { color: #f4f3ef; }
+.cookie-banner a { color: #ff5a1f; }
+.cookie-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+.cookie-banner .btn { padding: 0.7em 1.2em; font-size: 0.92rem; color: #f4f3ef; border-color: #f4f3ef; }
+.cookie-banner .btn-primary { color: #0c0c0d; border-color: #ff5a1f; }
+@media (max-width: 520px) { .cookie-actions .btn { flex: 1; } }

@@ -9,7 +9,6 @@ index.html              Homepage (hero → formular, cele 14 secțiuni din brief
 portofoliu.html         Portofoliu cu filtre pe nișă
 black-friday.html       Landing Black Friday 2026, cu countdown; se închide singur după 30.11.2026
 agentii.html            Pagină pentru agenții de performance
-personal-brand.html     Pagina secundară pentru personal brands
 termeni.html, confidentialitate.html, cookies.html   Pagini legale (modele, de verificat)
 404.html
 assets/css/style.css    Toate stilurile
@@ -70,9 +69,9 @@ Tot ce e marcat pe site cu galben (`.todo`) sau între paranteze drepte:
 - [ ] **1.250.000+ lei**: nu apare pe site-ul nou. Adaug-o doar dacă poți susține cifra cu date de la clienți.
 - [ ] **Testimoniale**: 2–3 reale, cu numele magazinului și acordul clientului. Nu publica testimoniale inventate.
 - [ ] **Studiu de caz găini**: rezultatul campaniei
-- [ ] **Portofoliu**: cele 11 clipuri CarSupreme sunt puse. Confirmă că CarSupreme e de acord să apară cu numele și adaugă rezultate, dacă ai. Datele sunt în `WORKS`, în fiecare card din `portofoliu.html` și `index.html`. Pentru alți clienți sau alte nișe, adaugă video-uri noi în `assets/video/`, iar posterul în `assets/img/posters/`.
+- [ ] **Portofoliu**: 13 clipuri, afișate doar cu produsul și unghiul, fără numele clienților. Pentru clipuri noi, pune video-ul în `assets/video/` și posterul în `assets/img/posters/`, apoi copiază un card `<article class="work">` din `portofoliu.html`.
 - [ ] **FAQ „Câte revizii sunt incluse?”**: numărul real de runde
-- [ ] **Pachetul minim 1 × 5**: preț, dacă vrei să fie afișat; acum scrie „La cerere”
+- [ ] **Intervale de preț**: ~2.000–5.000 lei per proiect și ~75–110 lei per creativ, deduse din cele două proiecte din brief. Ajustează-le dacă ai date mai noi.
 - [ ] **Pagini legale**: verificate de un jurist; data ultimei actualizări
 - [ ] **Imagine de share** `assets/img/og-image.jpg`, 1200×630, un cadru real din producție
 - [ ] **Pixel Meta / TikTok / Analytics**: dacă îi adaugi, ai nevoie de banner de consimțământ și de actualizarea paginii de cookies
@@ -90,7 +89,13 @@ Cadrele 9:16 cu dungi sunt locuri rezervate. Ca să pui un video, copiază fiși
 
 Pentru o imagine statică, folosește `<img src="/assets/img/cadru.jpg" alt="Descriere scurtă">`.
 
-Păstrează video-urile mici: maximum 720p, câțiva MB fiecare. GitHub nu acceptă fișiere de peste 100 MB, iar video-urile mari încetinesc site-ul. Pentru multe video-uri, ia în calcul YouTube Shorts sau Vimeo, cu embed.
+Video-urile sunt la 1080p, cu cel mult 45 MB per fișier. GitHub avertizează peste 50 MB și refuză fișierele de peste 100 MB. Pe site, un video se descarcă doar când vizitatorul apasă play. Singura excepție e `hero-loop.mp4`, care e mică.
+
+Pentru a comprima un clip nou la aceeași calitate:
+
+```
+ffmpeg -i original.mp4 -vf "scale=1080:1920:force_original_aspect_ratio=decrease,fps=30" -c:v libx264 -preset slow -crf 19 -maxrate 8000k -bufsize 16000k -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart assets/video/nume-clip.mp4
+```
 
 ## Black Friday
 

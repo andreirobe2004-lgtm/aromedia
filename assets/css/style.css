@@ -462,3 +462,26 @@ section { padding: clamp(64px, 10vw, 128px) 0; }
 .frame video { background: #000; }
 .hero-frame video { pointer-events: none; }
 .logo-slot.client { border-style: solid; color: var(--ink); font-weight: 700; letter-spacing: .02em; }
+
+/* Social proof fără logo-uri */
+.proof .wrap { grid-template-columns: 1fr; }
+.stats { justify-content: space-between; }
+
+/* Costuri: intervale + ofertă personalizată */
+.ranges { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+@media (max-width: 760px) { .ranges { grid-template-columns: 1fr; } }
+.range { border: 1px solid var(--line); border-radius: 10px; padding: clamp(22px, 3vw, 36px); display: grid; gap: 10px; background: var(--paper-2); }
+.range b { font-family: var(--f-display); font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; color: var(--red); }
+.range > span:last-child { color: var(--ink-2); font-size: 0.95rem; }
+.cols-quote { display: grid; grid-template-columns: 1fr 1.3fr; gap: clamp(28px, 5vw, 72px); margin-top: clamp(40px, 5vw, 64px); }
+@media (max-width: 860px) { .cols-quote { grid-template-columns: 1fr; } }
+.cols-quote h3 { margin-bottom: 16px; }
+.factors { list-style: none; margin: 0; padding: 0; }
+.factors li { padding: 12px 0 12px 26px; border-top: 1px solid var(--line); position: relative; color: var(--ink-2); }
+.factors li::before { content: "→"; position: absolute; left: 0; color: var(--red); }
+.structs { list-style: none; margin: 0; padding: 0; }
+.structs li { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); align-items: baseline; }
+.structs b { font-family: var(--f-mono); font-size: 0.95rem; color: var(--red); }
+.structs span { color: var(--ink-2); }
+@media (max-width: 520px) { .structs li { grid-template-columns: 1fr; gap: 4px; } }
+#pachete .retainer { margin-top: clamp(40px, 5vw, 64px); }

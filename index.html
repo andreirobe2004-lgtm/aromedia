@@ -17,7 +17,7 @@
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
@@ -93,43 +93,65 @@
   </div>
 </section>
 
-<section id="model" class="dark">
+<section id="model" class="dark bxh">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="bxh-top reveal">
       <span class="label">Soluția · modelul nostru</span>
-      <h2 class="sr-only">Body × Hooks = variații creative</h2>
-      <div class="bxh-formula" aria-hidden="true"><span>BODY</span><span class="x">×</span><span>HOOKS</span><span class="eq">=</span><span>VARIAȚII</span></div>
-      <p class="lead">Nu cumperi clipuri la bucată. Cumperi un set de variații construit dintr-un număr mic de body-uri și un număr mare de hook-uri. Același body montat cu zece hook-uri diferite înseamnă zece creative distincte pentru algoritm.</p>
+      <h2 class="bxh-title">Un body.<br>Zece deschideri.<br><span class="red">Zece reclame.</span></h2>
+      <p class="lead">Nu cumperi clipuri la bucată. Filmăm bine câteva body-uri, apoi le montăm cu multe hook-uri diferite. Fiecare combinație e un creativ separat pentru algoritm, iar tu afli din date care deschidere prinde.</p>
     </div>
 
-    <div class="bxh-def reveal">
-      <div><h3>Body</h3><p>Corpul reclamei: argumentul, demonstrația, povestea produsului. Se filmează o dată, bine.</p></div>
-      <div><h3>Hook</h3><p>Primele 2–3 secunde. Partea care decide dacă omul se oprește din scroll. Aici se testează.</p></div>
-    </div>
-
-    <div class="calc reveal" data-calc>
-      <div class="calc-controls">
-        <div class="presets" aria-label="Exemple de pachete">
-          <button type="button" data-preset data-b="1" data-h="5">Test minim · 1 × 5</button>
-          <button type="button" data-preset data-b="3" data-h="10">Un produs · 3 × 10</button>
+    <div class="studio reveal" data-studio>
+      <!-- Telefonul: rulează combinația curentă -->
+      <div class="studio-phone">
+        <div class="phone">
+          <video src="/assets/video/prev/tava-frunk.mp4" muted loop playsinline preload="metadata" data-studio-video></video>
+          <div class="phone-top">
+            <span class="ph-tag" data-tag>HOOK 01</span>
+            <span class="ph-count"><b data-k>01</b> / <span data-n>30</span></span>
+          </div>
+          <p class="ph-hook" data-hook-text>Știi că mașina ta are un portbagaj în față?</p>
+          <div class="ph-timeline" aria-hidden="true">
+            <span class="seg seg-hook">HOOK</span><span class="seg seg-body" data-seg-body>BODY 1</span>
+            <i class="playhead" data-playhead></i>
+          </div>
         </div>
-        <div class="ctrl">
-          <label for="bodies">Body-uri <output id="bodies-out" for="bodies">3</output></label>
-          <input type="range" id="bodies" min="1" max="12" value="3">
-        </div>
-        <div class="ctrl">
-          <label for="hooks">Hook-uri per body <output id="hooks-out" for="hooks">10</output></label>
-          <input type="range" id="hooks" min="1" max="15" value="10">
-        </div>
-        <div class="calc-result">
-          <b data-total>30</b>
-          <span data-sentence>3 body-uri montate fiecare cu 10 hook-uri = 30 creative distincte pentru algoritm.</span>
-        </div>
-        <a class="btn btn-primary" href="#oferta" data-calc-cta>Calculează-mi pachetul <span class="arr">→</span></a>
+        <p class="studio-note">Exemplu: tavă pentru frunk. Hook-urile din exemplu sunt ilustrative.</p>
       </div>
-      <div>
-        <div class="matrix-wrap"><div class="matrix" data-matrix aria-hidden="true"></div></div>
-        <div class="matrix-legend"><span><i style="background:#ff5a1f"></i>hook diferit (primele 2–3 secunde)</span><span><i style="background:#1c1c1f;border:1px solid #2e2e33"></i>același body</span></div>
+
+      <!-- Masa de montaj -->
+      <div class="studio-desk">
+        <div class="desk-row">
+          <span class="desk-label">Body-uri <em>filmate o dată</em></span>
+          <div class="bodies" data-bodies role="group" aria-label="Body-uri"></div>
+        </div>
+        <div class="desk-row">
+          <span class="desk-label">Hook-uri <em>primele 2–3 secunde</em></span>
+          <ol class="hooks" data-hooks></ol>
+        </div>
+        <div class="desk-row out">
+          <span class="desk-label">Creative livrate <em data-out-label>3 × 10</em></span>
+          <div class="output" data-output aria-hidden="true"></div>
+        </div>
+
+        <div class="desk-calc">
+          <div class="stepper">
+            <span>Body-uri</span>
+            <button type="button" data-step="b" data-d="-1" aria-label="Mai puține body-uri">−</button>
+            <output data-b>3</output>
+            <button type="button" data-step="b" data-d="1" aria-label="Mai multe body-uri">+</button>
+          </div>
+          <span class="op">×</span>
+          <div class="stepper">
+            <span>Hook-uri</span>
+            <button type="button" data-step="h" data-d="-1" aria-label="Mai puține hook-uri">−</button>
+            <output data-h>10</output>
+            <button type="button" data-step="h" data-d="1" aria-label="Mai multe hook-uri">+</button>
+          </div>
+          <span class="op">=</span>
+          <div class="total"><b data-total>30</b><span>creative</span></div>
+          <a class="btn btn-primary" href="#oferta" data-calc-cta>Calculează-mi pachetul <span class="arr">→</span></a>
+        </div>
       </div>
     </div>
 
@@ -140,7 +162,7 @@
       </div>
       <div>
         <h3>Și de ce costă cât costă.</h3>
-        <p>Plătești gândirea și filmarea body-urilor o singură dată, iar fiecare hook în plus e o variantă nouă la un cost mult mai mic. De aceea prețul per creative scade pe măsură ce setul crește.</p>
+        <p>Gândirea și filmarea body-urilor le plătești o singură dată. Fiecare hook în plus e o variantă nouă la un cost mult mai mic, așa că prețul per creativ scade pe măsură ce setul crește.</p>
       </div>
     </div>
   </div>
@@ -172,8 +194,8 @@
       <article class="case-col ours">
         <header><h3>Ce am filmat</h3><span class="tag yes">Varianta ARO</span></header>
         <div class="frame">
-  <video src="/assets/video/stimulator-ouat-gaini.mp4" poster="/assets/img/posters/stimulator-ouat-gaini.jpg" playsinline preload="none"></video>
-  <button class="play" aria-label="Pornește video"></button>
+  <video src="/assets/video/prev/stimulator-ouat-gaini.mp4" data-full="/assets/video/stimulator-ouat-gaini.mp4" poster="/assets/img/posters/stimulator-ouat-gaini.jpg" muted loop playsinline preload="none"></video>
+  <button class="sound" type="button" aria-label="Pornește cu sunet"><span>Cu sunet</span></button>
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="hud"><span class="r">REC</span><span>9:16</span></div>
 </div>
@@ -200,8 +222,8 @@
     <div class="work-grid reveal">
       <article class="work">
       <div class="frame">
-  <video src="/assets/video/lenjerie-modelatoare.mp4" poster="/assets/img/posters/lenjerie-modelatoare.jpg" playsinline preload="none"></video>
-  <button class="play" aria-label="Pornește video"></button>
+  <video src="/assets/video/prev/lenjerie-modelatoare.mp4" data-full="/assets/video/lenjerie-modelatoare.mp4" poster="/assets/img/posters/lenjerie-modelatoare.jpg" muted loop playsinline preload="none"></video>
+  <button class="sound" type="button" aria-label="Pornește cu sunet"><span>Cu sunet</span></button>
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="hud"><span class="r">REC</span><span>9:16</span></div>
 </div>
@@ -210,8 +232,8 @@
     </article>
 <article class="work">
       <div class="frame">
-  <video src="/assets/video/utilitara-electrica.mp4" poster="/assets/img/posters/utilitara-electrica.jpg" playsinline preload="none"></video>
-  <button class="play" aria-label="Pornește video"></button>
+  <video src="/assets/video/prev/utilitara-electrica.mp4" data-full="/assets/video/utilitara-electrica.mp4" poster="/assets/img/posters/utilitara-electrica.jpg" muted loop playsinline preload="none"></video>
+  <button class="sound" type="button" aria-label="Pornește cu sunet"><span>Cu sunet</span></button>
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="hud"><span class="r">REC</span><span>9:16</span></div>
 </div>
@@ -220,8 +242,8 @@
     </article>
 <article class="work">
       <div class="frame">
-  <video src="/assets/video/masca-faciala.mp4" poster="/assets/img/posters/masca-faciala.jpg" playsinline preload="none"></video>
-  <button class="play" aria-label="Pornește video"></button>
+  <video src="/assets/video/prev/masca-faciala.mp4" data-full="/assets/video/masca-faciala.mp4" poster="/assets/img/posters/masca-faciala.jpg" muted loop playsinline preload="none"></video>
+  <button class="sound" type="button" aria-label="Pornește cu sunet"><span>Cu sunet</span></button>
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="hud"><span class="r">REC</span><span>9:16</span></div>
 </div>
@@ -230,8 +252,8 @@
     </article>
 <article class="work">
       <div class="frame">
-  <video src="/assets/video/hrana-animale.mp4" poster="/assets/img/posters/hrana-animale.jpg" playsinline preload="none"></video>
-  <button class="play" aria-label="Pornește video"></button>
+  <video src="/assets/video/prev/hrana-animale.mp4" data-full="/assets/video/hrana-animale.mp4" poster="/assets/img/posters/hrana-animale.jpg" muted loop playsinline preload="none"></video>
+  <button class="sound" type="button" aria-label="Pornește cu sunet"><span>Cu sunet</span></button>
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="hud"><span class="r">REC</span><span>9:16</span></div>
 </div>
@@ -240,8 +262,8 @@
     </article>
 <article class="work">
       <div class="frame">
-  <video src="/assets/video/tava-frunk.mp4" poster="/assets/img/posters/tava-frunk.jpg" playsinline preload="none"></video>
-  <button class="play" aria-label="Pornește video"></button>
+  <video src="/assets/video/prev/tava-frunk.mp4" data-full="/assets/video/tava-frunk.mp4" poster="/assets/img/posters/tava-frunk.jpg" muted loop playsinline preload="none"></video>
+  <button class="sound" type="button" aria-label="Pornește cu sunet"><span>Cu sunet</span></button>
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="hud"><span class="r">REC</span><span>9:16</span></div>
 </div>
@@ -250,8 +272,8 @@
     </article>
 <article class="work">
       <div class="frame">
-  <video src="/assets/video/folie-mobilier.mp4" poster="/assets/img/posters/folie-mobilier.jpg" playsinline preload="none"></video>
-  <button class="play" aria-label="Pornește video"></button>
+  <video src="/assets/video/prev/folie-mobilier.mp4" data-full="/assets/video/folie-mobilier.mp4" poster="/assets/img/posters/folie-mobilier.jpg" muted loop playsinline preload="none"></video>
+  <button class="sound" type="button" aria-label="Pornește cu sunet"><span>Cu sunet</span></button>
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="hud"><span class="r">REC</span><span>9:16</span></div>
 </div>
@@ -260,8 +282,8 @@
     </article>
 <article class="work">
       <div class="frame">
-  <video src="/assets/video/espressor-portabil.mp4" poster="/assets/img/posters/espressor-portabil.jpg" playsinline preload="none"></video>
-  <button class="play" aria-label="Pornește video"></button>
+  <video src="/assets/video/prev/espressor-portabil.mp4" data-full="/assets/video/espressor-portabil.mp4" poster="/assets/img/posters/espressor-portabil.jpg" muted loop playsinline preload="none"></video>
+  <button class="sound" type="button" aria-label="Pornește cu sunet"><span>Cu sunet</span></button>
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="hud"><span class="r">REC</span><span>9:16</span></div>
 </div>
@@ -270,8 +292,8 @@
     </article>
 <article class="work">
       <div class="frame">
-  <video src="/assets/video/tablete-fosa-septica.mp4" poster="/assets/img/posters/tablete-fosa-septica.jpg" playsinline preload="none"></video>
-  <button class="play" aria-label="Pornește video"></button>
+  <video src="/assets/video/prev/tablete-fosa-septica.mp4" data-full="/assets/video/tablete-fosa-septica.mp4" poster="/assets/img/posters/tablete-fosa-septica.jpg" muted loop playsinline preload="none"></video>
+  <button class="sound" type="button" aria-label="Pornește cu sunet"><span>Cu sunet</span></button>
   <span class="corner c1"></span><span class="corner c2"></span><span class="corner c3"></span><span class="corner c4"></span>
   <div class="hud"><span class="r">REC</span><span>9:16</span></div>
 </div>

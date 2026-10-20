@@ -97,6 +97,14 @@ Pentru a comprima un clip nou la aceeași calitate:
 ffmpeg -i original.mp4 -vf "scale=1080:1920:force_original_aspect_ratio=decrease,fps=30" -c:v libx264 -preset slow -crf 19 -maxrate 8000k -bufsize 16000k -pix_fmt yuv420p -c:a aac -b:a 128k -movflags +faststart assets/video/nume-clip.mp4
 ```
 
+### Previzualizări pentru autoplay
+
+Clipurile din portofoliu pornesc singure, fără sunet, dintr-o variantă ușoară: `assets/video/prev/`, 540p, ~2 MB. La click se încarcă varianta completă, 1080p, cu sunet, din `assets/video/`. Pentru un clip nou ai nevoie de ambele variante:
+
+```
+ffmpeg -i assets/video/nume-clip.mp4 -vf "scale=540:960,fps=30" -an -c:v libx264 -preset veryfast -crf 30 -g 60 -pix_fmt yuv420p -movflags +faststart assets/video/prev/nume-clip.mp4
+```
+
 ## Black Friday
 
 Data de final este în `assets/js/main.js` (`CONFIG.bfEnd`). După această dată, banda de sus dispare automat, iar pagina `black-friday.html` afișează „Oferta s-a încheiat”.

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aromedia.ro/sitemap.xml
